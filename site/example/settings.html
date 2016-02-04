@@ -20,6 +20,7 @@
     margin: 0 20px;
     float: left;
     border-radius: 10px;
+    position: relative;
   }
   form {
     float: left;
@@ -48,25 +49,11 @@
   <label>Hwaccel:</label><input type="checkbox" name="hwaccel"><br>
 </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../spin.js"></script>
+<script src="../jquery.spin.js"></script>
 <script>
-  $.fn.spin = function(opts) {
-    this.each(function() {
-      var $this = $(this),
-          data = $this.data();
-
-      if (data.spinner) {
-        data.spinner.stop();
-        delete data.spinner;
-      }
-      if (opts !== false) {
-        data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
-      }
-    });
-    return this;
-  };
-  function update() {
+  function update () {
     var opts = {};
     $('input[min], select').each(function() {
       opts[this.name] = parseFloat(this.value);
